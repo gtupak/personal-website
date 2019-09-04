@@ -17,8 +17,8 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
