@@ -1,10 +1,12 @@
 import React from 'react';
-import CallToAction from '../components/CallToAction';
 import { graphql } from 'gatsby';
+import CallToAction from '../components/CallToAction';
+import ProjectsSection from '../components/ProjectsSection';
 
 const App = ({ data }) => (
   <div>
     <CallToAction bgImage={data.file.childImageSharp.fluid} />
+    <ProjectsSection />
   </div>
 );
 
@@ -13,9 +15,7 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "calltoaction-bg.jpg" }) {
       childImageSharp {
-        # Specify the image processing specifications right in the query.
-        # Makes it trivial to update as your page's design changes.
-        fluid {
+        fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
