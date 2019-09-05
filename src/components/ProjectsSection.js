@@ -1,50 +1,65 @@
 import React from 'react';
 import {
-	makeStyles,
 	Container,
 	Typography,
 	Box,
-	Card,
-	CardActionArea,
-	CardMedia,
-	CardContent,
-	Grid
+	Grid,
 } from '@material-ui/core';
+import { useStaticQuery, graphql } from 'gatsby';
+import ProjectCard from './ProjectCard';
 import neappoliImg from '../images/neappoli-screenshot.jpg';
 import sfMateiImg from '../images/sfmatei-screenshot.jpg';
 
-const useStyles = makeStyles({
-	card: {
-		width: 345,
-		height: 320
-	},
-	media: {
-		height: 200
-	}
-});
 
-const ProjectCard = ({ title, image, description, classes }) => (
-	<Card className={classes.card} onClick={() => console.log('dis clicked')} >
-		<CardActionArea>
-			<CardMedia
-				className={classes.media}
-				image={image}
-				title={title}
-			/>
-			<CardContent>
-				<Typography gutterBottom variant='h5' component='h3'>
-					{title}
-				</Typography>
-				<Typography variant='body2' component='p'>
-					{description}
-				</Typography>
-			</CardContent>
-		</CardActionArea>
-	</Card>
-);
+
+const projectData = {
+	neappoli: {
+		title: 'Neappoli',
+		image: neappoliImg,
+		description: 'A 3-1-1 mobile reporting app and website.',
+		features: [
+			'Hybrid mobile app done in Flutter',
+			'Serverless back-end with Firebase Functions',
+			'Responsive website in React',
+			'A dynamic map page pulling service requests from the database in real time'
+		],
+		link: 'https://www.neappoli.com'
+	},
+	sfmatei: {
+		title: 'St. Matthew Romanian Orthodox Parish',
+		description: "The official church's website",
+		image: sfMateiImg,
+		features: [
+			'Responsive website in React',
+			'A photo gallery with a mechanism that makes it easy to upload new albums',
+			'Various events and posts pages which content is easy to add/remove and update'
+		],
+		link: 'https://sfmatei.ca'
+	}
+};
+
+
 
 const ProjectsSection = () => {
-	const classes = useStyles();
+
+	const data = useStaticQuery(graphql`
+		query {
+			neappoli: file(relativePath: { eq: "neappoli-screenshot.jpg" }) {
+				childImageSharp {
+					fluid(maxWidth: 1200) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			sfmatei: file(relativePath: { eq: "sfmatei-screenshot.jpg" }) {
+				childImageSharp {
+					fluid(maxWidth: 1200, quality: 75) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+		}
+	`);
 
 	return(
 		<Box my={3}>
@@ -59,18 +74,14 @@ const ProjectsSection = () => {
 				>
 					<Grid item>
 						<ProjectCard 
-							image={neappoliImg}
-							title='Neappoli'
-							description='A 3-1-1 mobile reporting app and website.'
-							classes={classes}
+							projectEntry={projectData.neappoli}
+							fluidImage={data.neappoli.childImageSharp.fluid}
 						/>
 					</Grid>
 					<Grid item>
 						<ProjectCard
-							image={sfMateiImg}
-							title='St. Matthew Romanian Orthodox Parish'
-							description="The official church's website"
-							classes={classes}
+							projectEntry={projectData.sfmatei}
+							fluidImage={data.sfmatei.childImageSharp.fluid}
 						/>
 					</Grid>
 				</Grid>
