@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-	Container,
 	Typography,
 	Box,
 	Grid,
@@ -9,8 +8,6 @@ import { useStaticQuery, graphql } from 'gatsby';
 import ProjectCard from './ProjectCard';
 import neappoliImg from '../images/neappoli-screenshot.jpg';
 import sfMateiImg from '../images/sfmatei-screenshot.jpg';
-
-
 
 const projectData = {
 	neappoli: {
@@ -63,29 +60,27 @@ const ProjectsSection = () => {
 
 	return(
 		<Box my={3}>
-			<Container>
-				<Typography gutterBottom style={{ fontWeight: 500 }} align='center' variant='h5'>COMPLETED PROJECTS</Typography>
-				<Grid
-					container
-					direction='row'
-					justify='space-around'
-					alignItems='center'
-					style={{ marginTop: '20px' }}
-				>
-					<Grid item>
-						<ProjectCard 
-							projectEntry={projectData.neappoli}
-							fluidImage={data.neappoli.childImageSharp.fluid}
-						/>
-					</Grid>
-					<Grid item>
-						<ProjectCard
-							projectEntry={projectData.sfmatei}
-							fluidImage={data.sfmatei.childImageSharp.fluid}
-						/>
-					</Grid>
+			<Typography gutterBottom style={{ fontWeight: 500 }} align='center' variant='h5'>COMPLETED PROJECTS</Typography>
+			<Grid
+				container
+				direction='row'
+				justify='space-around'
+				alignItems='center'
+				style={{ marginTop: '20px' }}
+			>
+				<Grid item>
+					<ProjectCard 
+						projectEntry={projectData.neappoli}
+						fluidImage={data.neappoli.childImageSharp.fluid}
+					/>
 				</Grid>
-			</Container>
+				<Grid item>
+					<ProjectCard
+						projectEntry={projectData.sfmatei}
+						fluidImage={data.sfmatei.childImageSharp.fluid}
+					/>
+				</Grid>
+			</Grid>
 		</Box>
 	);
 };
