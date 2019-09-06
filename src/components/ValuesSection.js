@@ -24,7 +24,7 @@ const ValuesSection = () => {
 		query {
 			file(relativePath: { eq: "value-section-bg.jpg" }) {
 				childImageSharp {
-					fluid(maxWidth: 1200) {
+					fluid(maxWidth: 1200, quality: 90) {
 						...GatsbyImageSharpFluid
 					}
 				}

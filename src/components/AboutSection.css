@@ -1,0 +1,24 @@
+.bgImage {
+	height: 75vh;
+}
+	
+.bold {
+	font-weight: 500!important;
+}
+
+.divider {
+	background-color: rgba(255, 255, 255, 0.65)!important;
+	height: 52vh!important;
+}
+
+.icon {
+	color: white;
+}
+
+.infoText {
+	font-size: 1.75rem!important;
+}
+
+.link {
+	color: #ADCBFF!important;
+}

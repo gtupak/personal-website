@@ -40,12 +40,13 @@ const SkillsSection = () => {
 				container
 				justify='center'
 				alignItems='center'
-				spacing={3}
 			>
 				<Grid item sm={6}>
-					<Typography variant='h5' align='right'>
-						My skills include:
-					</Typography>
+					<Box mr={2}>
+						<Typography variant='h5' align='right'>
+							My skills include:
+						</Typography>
+					</Box>
 				</Grid>
 				<Grid item sm={6}>
 					<Box display='flex' justifyContent='left' align='center'>

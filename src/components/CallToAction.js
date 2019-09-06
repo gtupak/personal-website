@@ -55,7 +55,6 @@ const PhotoPaper = () => (
 					timeout={1250}
 				>
 					<Paper elevation={5} >
-						{console.log(data)}
 						<Box width={350} p={4}>
 							<Img fluid={data.file.childImageSharp.fluid} />
 						</Box>

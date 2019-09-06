@@ -4,6 +4,7 @@ import CallToAction from '../components/CallToAction';
 import ProjectsSection from '../components/ProjectsSection';
 import ValuesSection from '../components/ValuesSection';
 import SkillsSection from '../components/SkillsSection';
+import AboutSection from '../components/AboutSection';
 
 const App = ({ data }) => (
   <div>
@@ -11,6 +12,7 @@ const App = ({ data }) => (
     <ProjectsSection />
     <ValuesSection />
     <SkillsSection />
+    <AboutSection />
   </div>
 );
 
