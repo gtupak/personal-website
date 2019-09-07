@@ -25,13 +25,23 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Gabriel Tapuc Freelancing`,
+        short_name: `Gabriel T.`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#fff`,
+        theme_color: `#09172F`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-66133549-3",
+        head: true,
+        respectDNT: true, // do not track
+        // Delays sending pageview hits on route update (in milliseconds)
+        pageTransitionDelay: 0,
       }
     }
   ],

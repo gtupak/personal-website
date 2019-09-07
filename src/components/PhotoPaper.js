@@ -7,7 +7,7 @@ import {
 import Img from 'gatsby-image';
 import { StaticQuery, graphql } from 'gatsby';
 
-const PhotoPaper = ({ rotateDegrees='0', direction='up', width='27vw', padding=3 }) => (
+const PhotoPaper = ({ rotateDegrees='0', width='27vw', padding=3 }) => (
 	<StaticQuery
 		query={ graphql`
 			query {
@@ -23,8 +23,8 @@ const PhotoPaper = ({ rotateDegrees='0', direction='up', width='27vw', padding=3
 		render={data => (
 			<div style={{ transform: `rotate(${rotateDegrees}deg)` }} >
 				<Slide 
-					direction={direction} 
-					in 
+					direction='down' 
+					in
 					mountOnEnter 
 					timeout={1250}
 				>

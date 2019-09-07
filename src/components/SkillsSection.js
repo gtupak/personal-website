@@ -23,7 +23,7 @@ const SkillsSection = () => {
 	const classes = useStyles();
 
 	const onChatBtnPressed = (event) => {
-		window.location = 'mailto:hello@neappoli.com';
+		window.location = 'mailto:gabriel@neappoli.com';
   };
 
 	return(

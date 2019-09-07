@@ -34,10 +34,10 @@ const useStyles = makeStyles({
 
 const CallToAction = ({ bgImage }) => {
   const classes = useStyles();
-  const showDesktopVersion = useMediaQuery('(min-width: 960px)');
+  const showDesktopVersion = useMediaQuery('(min-width: 600px)');
 
   const onChatBtnPressed = (event) => {
-		window.location = 'mailto:hello@neappoli.com';
+		window.location = 'mailto:gabriel@neappoli.com';
   };
 
   const desktopVersion = (
@@ -84,7 +84,8 @@ const CallToAction = ({ bgImage }) => {
 		>
 			<Box position='relative' height='100vh'>
 				<Box display='flex' justifyContent='center' alignItems='center' pt={5}>
-		    	<PhotoPaper width='65vw' direction='down' padding={2} />
+					{console.log('down')}
+		    	<PhotoPaper width='65vw' padding={2} />
 		    </Box>
 		    <Box pt={2} display='flex' flexDirection='column' justifyContent='center' >
 		    	<Box pt={1}>

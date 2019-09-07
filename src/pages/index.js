@@ -5,9 +5,11 @@ import ProjectsSection from '../components/ProjectsSection';
 import ValuesSection from '../components/ValuesSection';
 import SkillsSection from '../components/SkillsSection';
 import AboutSection from '../components/AboutSection';
+import Seo from '../components/Seo';
 
 const App = ({ data }) => (
   <div>
+    <Seo />
     <CallToAction bgImage={data.file.childImageSharp.fluid} />
     <ProjectsSection />
     <ValuesSection />

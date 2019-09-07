@@ -15,45 +15,15 @@ import { LocationOn } from '@material-ui/icons';
 import SchoolIcon from '@material-ui/icons/School';
 import WorkIcon from '@material-ui/icons/Work';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import TwitterIcon from './icons/TwitterIcon';
 import LinkedInIcon from './icons/LinkedInIcon';
 import './AboutSection.css';
-
-const sectionHeight = '75vh';
-
-const InfoItem = ({ icon, title, category, link=false }) => (
-	<ListItem>
-		<ListItemIcon>
-			{ icon }
-		</ListItemIcon>
-		<ListItemText>
-			{
-				link
-				? (
-					<Link 
-						href='https://bit.ly/gabriel-tapuc-linkedin' 
-						variant='h5' 
-						className='bold link' 
-						color='textSecondary'
-						target='_blank'
-						rel='noopener'
-					>
-						{ title }
-					</Link>
-				) : (
-					<Typography variant='h5' className='bold infoText' color='textSecondary'>
-						{ title }
-					</Typography>
-				)
-			}
-			<Typography variant='subtitle2' color='textSecondary'>
-				{ category }
-			</Typography>
-		</ListItemText>
-	</ListItem>	
-);
+import PhotoPaper from './PhotoPaper';
 
 const AboutSection = () => {
+  const showDesktopVersion = useMediaQuery('(min-width: 600px)');
+	const sectionHeight = showDesktopVersion ? '75vh' : '100vh';
 	const data = useStaticQuery(graphql`
 		query {
 			bgImage: file(relativePath: { eq: "about-me-bg.jpg" }) {
@@ -73,10 +43,62 @@ const AboutSection = () => {
 		}
 	`);
 
-	return(
+	const infoList = (
+		<List>
+			<InfoItem
+				icon={<LocationOn fontSize='large' className='icon' />}
+				title='Ottawa,Canada'
+				category='LOCATION'
+			/>
+			<InfoItem
+				icon={<SchoolIcon fontSize='large' className='icon' />}
+				title='BSc Computer Science, University of Ottawa'
+				category='EDUCATION'
+			/>
+			<InfoItem
+				icon={<WorkIcon fontSize='large' className='icon' />}
+				title='3.5 years of work experience across various companies'
+				category='WORK EXPERIENCE'
+				link
+			/>
+			<InfoItem
+				icon={<FavoriteIcon fontSize='large' className='icon' />}
+				title='Startups, Sports, Travel & Coffee'
+				category='PASSIONS'
+			/>
+		</List>
+	);
+
+	const mobileVersion = (
 		<BackgroundImage
 			fluid={data.bgImage.childImageSharp.fluid}
-			className='bgImage'
+		>
+			<Box
+				minHeight={sectionHeight}
+				alignItems='center'
+				flexDirection='column'
+			>
+				<Box pt={4} align='center'>
+					<Typography className='bold' variant='h3' color='textSecondary'>
+						ABOUT ME
+					</Typography>
+				</Box>
+				<Box display='flex' justifyContent='center' pt={2}>
+					<PhotoPaper width='75vw' />
+				</Box>
+				<Box pt={2} width='95vw'>
+					<Divider className='divider' variant='middle'/>
+				</Box>
+				<Box py={2}>
+					{infoList}
+				</Box>
+			</Box>
+		</BackgroundImage>
+	);
+
+	const desktopVersion = (
+		<BackgroundImage
+			fluid={data.bgImage.childImageSharp.fluid}
 		>
 			<Box
 				height={sectionHeight}
@@ -128,41 +150,54 @@ const AboutSection = () => {
 						</Box>
 					</Grid>
 					<Grid item xs={1}>
-						<Divider 
-							className='divider' 
-							orientation='vertical'
-							variant='fullWidth'
-						/>
+						<Box height='60vh'>
+							<Divider 
+								className='divider' 
+								orientation='vertical'
+							/>
+						</Box>
 					</Grid>
 					<Grid item xs>
-						<List>
-							<InfoItem
-								icon={<LocationOn fontSize='large' className='icon' />}
-								title='Ottawa,Canada'
-								category='LOCATION'
-							/>
-							<InfoItem
-								icon={<SchoolIcon fontSize='large' className='icon' />}
-								title='BSc Computer Science, University of Ottawa'
-								category='EDUCATION'
-							/>
-							<InfoItem
-								icon={<WorkIcon fontSize='large' className='icon' />}
-								title='3.5 years of work experience across various companies'
-								category='WORK EXPERIENCE'
-								link
-							/>
-							<InfoItem
-								icon={<FavoriteIcon fontSize='large' className='icon' />}
-								title='Startups, Sports, Travel & Coffee'
-								category='PASSIONS'
-							/>
-						</List>
+						{infoList}
 					</Grid>
 				</Grid>
 			</Box>
 		</BackgroundImage>
 	);
+
+	return showDesktopVersion ? desktopVersion : mobileVersion;
 };
+
+const InfoItem = ({ icon, title, category, link=false }) => (
+	<ListItem>
+		<ListItemIcon>
+			{ icon }
+		</ListItemIcon>
+		<ListItemText>
+			{
+				link
+				? (
+					<Link 
+						href='https://bit.ly/gabriel-tapuc-linkedin' 
+						variant='h5' 
+						className='bold link' 
+						color='textSecondary'
+						target='_blank'
+						rel='noopener'
+					>
+						{ title }
+					</Link>
+				) : (
+					<Typography variant='h5' className='bold infoText' color='textSecondary'>
+						{ title }
+					</Typography>
+				)
+			}
+			<Typography variant='subtitle2' color='textSecondary'>
+				{ category }
+			</Typography>
+		</ListItemText>
+	</ListItem>	
+);
 
 export default AboutSection;
