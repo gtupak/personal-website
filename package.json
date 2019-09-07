@@ -25,6 +25,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
+    "deploy": "gatsby build && firebase deploy",
     "serve": "gatsby serve"
   }
 }

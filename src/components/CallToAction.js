@@ -1,13 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { 
-	Box,
-	Typography,
-	Button,
-} from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import BackgroundImage from 'gatsby-background-image'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import PhotoPaper from './PhotoPaper';
+import Img from 'gatsby-image';
+import './CallToAction.css';
 
 const useStyles = makeStyles({
   verticalCenterRight: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 });
 
 
-const CallToAction = ({ bgImage }) => {
+const CallToAction = ({ bgImage, logo, photo }) => {
   const classes = useStyles();
   const showDesktopVersion = useMediaQuery('(min-width: 600px)');
 
@@ -46,7 +46,10 @@ const CallToAction = ({ bgImage }) => {
 		>
 			<Box height='100vh' position='relative' >
 				<Box position='absolute' top='6vw' left='9vw'>
-		    	<PhotoPaper rotateDegrees='-16' />
+		    	<PhotoPaper fluidImg={photo} slide={true} rotateDegrees='-16' />
+		    </Box>
+		    <Box position='absolute' height={100} width={100} top={20} right={20}>
+		    	<Img fluid={logo} />
 		    </Box>
 		    <Box position='absolute' className={classes.verticalCenterRight}>
 		      <Typography color='textSecondary' align='right' className={classes.lightHeaderText} variant='h4'>
@@ -84,8 +87,7 @@ const CallToAction = ({ bgImage }) => {
 		>
 			<Box position='relative' height='100vh'>
 				<Box display='flex' justifyContent='center' alignItems='center' pt={5}>
-					{console.log('down')}
-		    	<PhotoPaper width='65vw' padding={2} />
+		    	<PhotoPaper fluidImg={photo} slide width='65vw' padding={2} />
 		    </Box>
 		    <Box pt={2} display='flex' flexDirection='column' justifyContent='center' >
 		    	<Box pt={1}>
@@ -154,7 +156,23 @@ const CallToAction = ({ bgImage }) => {
 		</BackgroundImage>
 	);
 
-	return showDesktopVersion ? desktopVersion : mobileVersion;
+	return(
+		<React.Fragment>
+			{
+				showDesktopVersion
+				? (
+					<div className='desktopCTA'>
+						{desktopVersion}
+					</div>
+				)
+				: (
+					<div className='mobileCTA'>
+						{mobileVersion}
+					</div>
+				)
+			}
+		</React.Fragment>
+	);
 };
 
 export default CallToAction;

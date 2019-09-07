@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-	Typography,
-	Box,
-	Grid,
-} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import { useStaticQuery, graphql } from 'gatsby';
 import ProjectCard from './ProjectCard';
 import neappoliImg from '../images/neappoli-screenshot.jpg';

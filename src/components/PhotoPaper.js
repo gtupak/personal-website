@@ -1,42 +1,37 @@
 import React from 'react';
-import { 
-	Box,
-	Paper,
-	Slide
-} from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import Slide from '@material-ui/core/Slide';
 import Img from 'gatsby-image';
-import { StaticQuery, graphql } from 'gatsby';
 
-const PhotoPaper = ({ rotateDegrees='0', width='27vw', padding=3 }) => (
-	<StaticQuery
-		query={ graphql`
-			query {
-		    file(relativePath: { eq: "io_picture.jpg" }) {
-		      childImageSharp {
-		        fluid {
-		          ...GatsbyImageSharpFluid
-		        }
-		      }
-		    }
-		  }
-		`}
-		render={data => (
-			<div style={{ transform: `rotate(${rotateDegrees}deg)` }} >
-				<Slide 
-					direction='down' 
-					in
-					mountOnEnter 
-					timeout={1250}
-				>
+const PhotoPaper = ({ slide=false, rotateDegrees='0', fluidImg, width='27vw', padding=3 }) => {
+	return(
+		<div style={{ transform: `rotate(${rotateDegrees}deg)` }} >
+			{
+				slide
+				? (
+					<Slide 
+						direction='down' 
+						in
+						mountOnEnter 
+						timeout={1250}
+					>
+						<Paper elevation={5} >
+							<Box width={width} p={padding}>
+								<Img fluid={fluidImg} />
+							</Box>
+						</Paper>
+					</Slide>
+				) : (
 					<Paper elevation={5} >
 						<Box width={width} p={padding}>
-							<Img fluid={data.file.childImageSharp.fluid} />
+							<Img fluid={fluidImg} />
 						</Box>
 					</Paper>
-				</Slide>
-			</div>
-		)}
-	/>
-);
+				)
+			}
+		</div>
+	);
+};
 
 export default PhotoPaper;

@@ -1,13 +1,14 @@
 import React from 'react';
-import {
-	Box,
-	Typography,
-	Grid,
-	Divider,
-	Paper,
-	Link,
-	List, ListItem, ListItemIcon, ListItemText
-} from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
+import List from '@material-ui/core/List';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
 import BackgroundImage from 'gatsby-background-image'
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -21,7 +22,7 @@ import LinkedInIcon from './icons/LinkedInIcon';
 import './AboutSection.css';
 import PhotoPaper from './PhotoPaper';
 
-const AboutSection = () => {
+const AboutSection = ({ photo }) => {
   const showDesktopVersion = useMediaQuery('(min-width: 600px)');
 	const sectionHeight = showDesktopVersion ? '75vh' : '100vh';
 	const data = useStaticQuery(graphql`
@@ -33,7 +34,7 @@ const AboutSection = () => {
 					}
 				}
 			}
-			portrait: file(relativePath: { eq: "io_picture.jpg" }) {
+			portrait: file(relativePath: { eq: "profile-pic.jpg" }) {
 				childImageSharp {
 					fluid(maxWidth: 1200, quality: 90) {
 						...GatsbyImageSharpFluid
@@ -84,7 +85,7 @@ const AboutSection = () => {
 					</Typography>
 				</Box>
 				<Box display='flex' justifyContent='center' pt={2}>
-					<PhotoPaper width='75vw' />
+					<PhotoPaper fluidImg={photo} width='75vw' />
 				</Box>
 				<Box pt={2} width='95vw'>
 					<Divider className='divider' variant='middle'/>
@@ -125,7 +126,7 @@ const AboutSection = () => {
 							<Box my={2}>
 								<Paper elevation={5}>
 									<Box width='40vh' p={2}>
-										<Img fluid={data.portrait.childImageSharp.fluid} />
+										<Img fluid={photo} />
 									</Box>
 								</Paper>
 							</Box>

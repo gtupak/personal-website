@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import {
-	makeStyles,
-	Typography,
-	Box,
-	Card, CardActionArea, CardMedia, CardContent, CardActions,
-	Button,
-	Divider,
-	Dialog, DialogTitle, DialogContent, DialogActions,
-	List, ListItem, ListItemIcon, ListItemText
-} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/styles';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 import Img from 'gatsby-image';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
