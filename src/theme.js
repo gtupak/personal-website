@@ -30,17 +30,17 @@ const theme = {
         }
       },
       h3: {
-        [breakpoints.down('md')]: {
-          fontSize: '2rem'
+        [breakpoints.down('sm')]: {
+          fontSize: '2.5rem'
         }
       },
       h4: {
-        [breakpoints.down('md')]: {
+        [breakpoints.down('sm')]: {
           fontSize: '1.8rem'
         }
       },
       h5: {
-        [breakpoints.down('md')]: {
+        [breakpoints.down('sm')]: {
           fontSize: '1.1rem'
         }
       }
