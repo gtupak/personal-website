@@ -59,14 +59,16 @@ const ProjectsSection = () => {
 	`);
 
 	return(
-		<Box my={3}>
-			<Typography gutterBottom style={{ fontWeight: 500 }} align='center' variant='h4'>COMPLETED PROJECTS</Typography>
+		<Box my={3} px={4}>
+			<Typography gutterBottom style={{ fontWeight: 500 }} align='center' variant='h4'>
+				COMPLETED PROJECTS
+			</Typography>
 			<Grid
 				container
-				direction='row'
 				justify='space-around'
 				alignItems='center'
 				style={{ marginTop: '20px' }}
+				spacing={2}
 			>
 				<Grid item>
 					<ProjectCard 

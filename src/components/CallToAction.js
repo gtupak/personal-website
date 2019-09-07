@@ -45,12 +45,14 @@ const CallToAction = ({ bgImage }) => {
 			fluid={bgImage}
 		>
 			<Box height='100vh' position='relative' >
+				<Box position='absolute' top='6vw' left='9vw'>
+		    	<PhotoPaper rotateDegrees='-16' />
+		    </Box>
 		    <Box position='absolute' className={classes.verticalCenterRight}>
-		      <Typography color='textSecondary' align='right' className={classes.lightHeadeText} variant='h4'>
-		        Hi,
+		      <Typography color='textSecondary' align='right' className={classes.lightHeaderText} variant='h4'>
+		        Hi, my name is
 		      </Typography>
 		      <div className={classes.rightText}>
-		        <Typography color='textSecondary' display='inline' className={classes.lightHeaderText} variant='h4'>I'm </Typography>
 		        <Typography color='textSecondary' display='inline' className={classes.boldHeaderText} variant='h1'>Gabriel</Typography>
 		      </div>
 		      <div className={classes.rightText}>
@@ -71,9 +73,6 @@ const CallToAction = ({ bgImage }) => {
 		          Let's chat
 		        </Button>
 		      </Box>
-		    </Box>
-		    <Box position='absolute' top='6vw' left='9vw'>
-		    	<PhotoPaper rotateDegrees='-16' />
 		    </Box>
 		  </Box>
 		</BackgroundImage>

@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 import Img from 'gatsby-image';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles({
 	card: {
@@ -24,6 +25,8 @@ const useStyles = makeStyles({
 const ProjectCard = ({ projectEntry, fluidImage }) => {
 	const [openCardInfo, setOpenCardInfo] = useState(false);
 	const classes = useStyles();
+  const isMobile = useMediaQuery('(max-width: 960px)');
+  const dialogScreenshotPercent = isMobile ? '100%' : '85%';
 
 	const onCardClicked = () => {
 		setOpenCardInfo(true);
@@ -87,8 +90,14 @@ const ProjectCard = ({ projectEntry, fluidImage }) => {
 				</DialogTitle>
 				<DialogContent>
 					<Box mb={4} display='flex' justifyContent='center' width='100%'>
-						<Box align='center' height='50%' width='50%'>
-							<Img fluid={fluidImage} />
+						<Box 
+							align='center' 
+							height={dialogScreenshotPercent} 
+							width={dialogScreenshotPercent}
+						>
+							<div onClick={() => onVisitSiteClicked(projectEntry.link)}>
+								<Img fluid={fluidImage} />
+							</div>
 						</Box>
 					</Box>
 					<Divider />
