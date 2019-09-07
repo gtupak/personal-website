@@ -60,7 +60,7 @@ const ProjectsSection = () => {
 
 	return(
 		<Box my={3}>
-			<Typography gutterBottom style={{ fontWeight: 500 }} align='center' variant='h5'>COMPLETED PROJECTS</Typography>
+			<Typography gutterBottom style={{ fontWeight: 500 }} align='center' variant='h4'>COMPLETED PROJECTS</Typography>
 			<Grid
 				container
 				direction='row'

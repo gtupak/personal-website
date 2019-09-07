@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { 
 	Box,
@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 import Img from 'gatsby-image';
 import { StaticQuery, graphql } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image'
 
 const useStyles = makeStyles({
   verticalCenterRight: {
@@ -25,15 +26,10 @@ const useStyles = makeStyles({
   },
   lightHeaderText: {
     fontWeight: 100
-  },
-  horizontalCenter: {
-    margin: 0,
-    left: '50%',
-    transform: 'translateX(-50%)'
   }
 });
 
-const PhotoPaper = () => (
+const PhotoPaper = ({ isMobile=false }) => (
 	<StaticQuery
 		query={ graphql`
 			query {
@@ -55,7 +51,7 @@ const PhotoPaper = () => (
 					timeout={1250}
 				>
 					<Paper elevation={5} >
-						<Box width={350} p={4}>
+						<Box width='27vw' p={3}>
 							<Img fluid={data.file.childImageSharp.fluid} />
 						</Box>
 					</Paper>
@@ -66,46 +62,54 @@ const PhotoPaper = () => (
 );
 
 const CallToAction = ({ bgImage }) => {
-  const styles = useStyles();
+  const classes = useStyles();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+  	if (window.innerWidth < 900) setIsMobile(true);
+  }, []);
 
   const onChatBtnPressed = (event) => {
 		window.location = 'mailto:hello@neappoli.com';
   };
 
 	return(
-		<Box bgcolor='#09172F' overflow='hidden' height='100vh' position='relative' >
-	    <Img fluid={bgImage} />
-	    <Box position='absolute' className={styles.verticalCenterRight}>
-	      <Typography color='textSecondary' align='right' className={styles.lightHeadeText} variant='h4'>
-	        Hi,
-	      </Typography>
-	      <div className={styles.rightText}>
-	        <Typography color='textSecondary' display='inline' className={styles.lightHeaderText} variant='h4'>I'm </Typography>
-	        <Typography color='textSecondary' display='inline' className={styles.boldHeaderText} variant='h1'>Gabriel</Typography>
-	      </div>
-	      <div className={styles.rightText}>
-	        <Typography color='textSecondary' display='inline' className={styles.lightHeaderText} variant='h4'>and I build </Typography>
-	        <Typography color='textSecondary' display='inline' className={styles.boldHeaderText} variant='h1'>web</Typography>
-	      </div>
-	      <div className={styles.rightText}>
-	        <Typography color='textSecondary' display='inline' className={styles.lightHeaderText} variant='h4'>and </Typography>
-	        <Typography color='textSecondary' display='inline' className={styles.boldHeaderText} variant='h1'>mobile apps.</Typography>
-	      </div>
-	    </Box>
-	    <Box position='absolute' bottom='7vh' display='flex' alignItems='center' className={styles.horizontalCenter} >
-	      <Typography color='textSecondary' className={styles.lightHeaderText} variant='h3'>
-	        Need a freelancer?
-	      </Typography>
-	      <Box ml={2}>
-	        <Button onClick={onChatBtnPressed} variant='contained' color='secondary'>
-	          Let's chat
-	        </Button>
-	      </Box>
-	    </Box>
-	    <Box position='absolute' top='8vw' left='10vw'>
-	    	<PhotoPaper />
-	    </Box>
-	  </Box>
+		<BackgroundImage
+			fluid={bgImage}
+		>
+			<Box height='100vh' position='relative' >
+		    <Box position='absolute' className={classes.verticalCenterRight}>
+		      <Typography color='textSecondary' align='right' className={classes.lightHeadeText} variant='h4'>
+		        Hi,
+		      </Typography>
+		      <div className={classes.rightText}>
+		        <Typography color='textSecondary' display='inline' className={classes.lightHeaderText} variant='h4'>I'm </Typography>
+		        <Typography color='textSecondary' display='inline' className={classes.boldHeaderText} variant='h1'>Gabriel</Typography>
+		      </div>
+		      <div className={classes.rightText}>
+		        <Typography color='textSecondary' display='inline' className={classes.lightHeaderText} variant='h4'>and I build </Typography>
+		        <Typography color='textSecondary' display='inline' className={classes.boldHeaderText} variant='h1'>web</Typography>
+		      </div>
+		      <div className={classes.rightText}>
+		        <Typography color='textSecondary' display='inline' className={classes.lightHeaderText} variant='h4'>and </Typography>
+		        <Typography color='textSecondary' display='inline' className={classes.boldHeaderText} variant='h1'>mobile apps.</Typography>
+		      </div>
+		    </Box>
+		    <Box position='absolute' bottom='6vh' display='flex' alignItems='center' justifyContent='center' width='100vw' >
+		      <Typography color='textSecondary' className={classes.lightHeaderText} variant='h3'>
+		        Need a freelancer?
+		      </Typography>
+		      <Box ml={2}>
+		        <Button onClick={onChatBtnPressed} variant='contained' color='secondary'>
+		          Let's chat
+		        </Button>
+		      </Box>
+		    </Box>
+		    <Box position='absolute' top='6vw' left='9vw'>
+		    	<PhotoPaper />
+		    </Box>
+		  </Box>
+		</BackgroundImage>
 	);
 };
 

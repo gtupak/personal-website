@@ -32,8 +32,8 @@ const InfoItem = ({ icon, title, category, link=false }) => (
 				? (
 					<Link 
 						href='https://bit.ly/gabriel-tapuc-linkedin' 
-						variant='h4' 
-						className='bold infoText link' 
+						variant='h5' 
+						className='bold link' 
 						color='textSecondary'
 						target='_blank'
 						rel='noopener'
@@ -41,7 +41,7 @@ const InfoItem = ({ icon, title, category, link=false }) => (
 						{ title }
 					</Link>
 				) : (
-					<Typography variant='h4' className='bold infoText' color='textSecondary'>
+					<Typography variant='h5' className='bold infoText' color='textSecondary'>
 						{ title }
 					</Typography>
 				)
@@ -100,14 +100,14 @@ const AboutSection = () => {
 							<Typography className='bold' variant='h3' color='textSecondary'>
 								ABOUT ME
 							</Typography>
-							<Box m={3}>
+							<Box my={2}>
 								<Paper elevation={5}>
-									<Box width={250} p={3}>
+									<Box width='40vh' p={2}>
 										<Img fluid={data.portrait.childImageSharp.fluid} />
 									</Box>
 								</Paper>
 							</Box>
-							<Box m={2} display='flex'>
+							<Box display='flex'>
 								<Link 
 									href='https://bit.ly/gabriel-tapuc-twitter' 
 									target='_blank'
