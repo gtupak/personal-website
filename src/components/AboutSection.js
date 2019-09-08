@@ -189,12 +189,12 @@ const InfoItem = ({ icon, title, category, link=false }) => (
 						{ title }
 					</Link>
 				) : (
-					<Typography variant='h5' className='bold infoText' color='textSecondary'>
+					<Typography variant='h5' color='textSecondary' className='bold infoText' >
 						{ title }
 					</Typography>
 				)
 			}
-			<Typography variant='subtitle2' color='textSecondary'>
+			<Typography style={{ color: '#afb0b3' }} variant='subtitle2'>
 				{ category }
 			</Typography>
 		</ListItemText>

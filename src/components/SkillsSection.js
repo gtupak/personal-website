@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/styles';
 import LaptopIcon from '@material-ui/icons/Laptop';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import SettingsIcon from '@material-ui/icons/Settings';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles({
 	connectButton: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
 
 const SkillsSection = () => {
 	const classes = useStyles();
+  const showDesktopVersion = useMediaQuery('(min-width: 600px)');
 
 	const onChatBtnPressed = (event) => {
 		window.location = 'mailto:gabriel@neappoli.com';
@@ -42,16 +44,33 @@ const SkillsSection = () => {
 				justify='center'
 				alignItems='center'
 			>
-				<Grid item sm={6}>
-					<Box mr={2}>
-						<Typography variant='h5' align='right'>
-							My skills include:
-						</Typography>
-					</Box>
-				</Grid>
+				{
+					showDesktopVersion 
+					? (
+						<Grid item sm={6}>
+							<Box mr={2} align='right'>
+								<Typography variant='h5'>
+									My skills include:
+								</Typography>
+							</Box>
+						</Grid>
+					) : null
+				}
 				<Grid item sm={6}>
 					<Box display='flex' justifyContent='left' align='center'>
 						<List>
+							{
+								!showDesktopVersion
+								? (
+									<ListItem>
+										<ListItemText>
+											<Typography variant='h5'>
+												My skills include:
+											</Typography>
+										</ListItemText>
+									</ListItem>
+								) : null
+							}
 							<ListItem>
 								<ListItemIcon>
 									<LaptopIcon color='secondary' />
