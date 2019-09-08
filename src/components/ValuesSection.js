@@ -70,7 +70,7 @@ const ValuesSection = () => {
 								<Typography className={classes.lightText} variant='h4' color='textSecondary'>
 									Full Stack Development
 								</Typography>
-								<Typography variant='subtitle2' color='textSecondary'>
+								<Typography style={{ color: '#afb0b3' }} variant='subtitle2'>
 									Server logic & custom features
 								</Typography>
 							</Box>

@@ -80,7 +80,7 @@ const SkillsSection = () => {
 								</ListItemIcon>
 								<ListItemText>
 									<Typography variant='h5' color='primary'>
-										React (web)
+										React <b>(web)</b>
 									</Typography>
 								</ListItemText>
 							</ListItem>
@@ -90,7 +90,7 @@ const SkillsSection = () => {
 								</ListItemIcon>
 								<ListItemText>
 									<Typography variant='h5' color='primary'>
-										Flutter & Swift (mobile apps)
+										Flutter & Swift <b>(mobile apps)</b>
 									</Typography>
 								</ListItemText>
 							</ListItem>

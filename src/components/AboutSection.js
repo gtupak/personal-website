@@ -3,7 +3,6 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -11,7 +10,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import BackgroundImage from 'gatsby-background-image'
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import { LocationOn } from '@material-ui/icons';
 import SchoolIcon from '@material-ui/icons/School';
 import WorkIcon from '@material-ui/icons/Work';
@@ -85,7 +83,7 @@ const AboutSection = ({ photo }) => {
 					</Typography>
 				</Box>
 				<Box display='flex' justifyContent='center' pt={2}>
-					<PhotoPaper fluidImg={photo} width='75vw' />
+					<PhotoPaper fluidImg={photo} width='75vw' padding={2} />
 				</Box>
 				<Box pt={2} width='95vw'>
 					<Divider className='divider' variant='middle'/>
@@ -124,11 +122,7 @@ const AboutSection = ({ photo }) => {
 								ABOUT ME
 							</Typography>
 							<Box my={2}>
-								<Paper elevation={5}>
-									<Box width='40vh' p={2}>
-										<Img fluid={photo} />
-									</Box>
-								</Paper>
+								<PhotoPaper fluidImg={photo} width='40vh' padding={2} />
 							</Box>
 							<Box display='flex'>
 								<Link 
