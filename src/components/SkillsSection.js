@@ -18,6 +18,9 @@ const useStyles = makeStyles({
 		height: 60,
 		width: 200,
 		fontSize: 'large'
+	},
+	bold: {
+		fontWeight: 500
 	}
 });
 
@@ -49,7 +52,7 @@ const SkillsSection = () => {
 					? (
 						<Grid item sm={6}>
 							<Box mr={2} align='right'>
-								<Typography variant='h5'>
+								<Typography className={classes.bold} variant='h5'>
 									My skills include:
 								</Typography>
 							</Box>
@@ -64,7 +67,7 @@ const SkillsSection = () => {
 								? (
 									<ListItem>
 										<ListItemText>
-											<Typography variant='h5'>
+											<Typography className={classes.bold} variant='h5'>
 												My skills include:
 											</Typography>
 										</ListItemText>
