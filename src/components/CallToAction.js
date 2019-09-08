@@ -55,7 +55,7 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 				<Box position='absolute' top='6vw' left='9vw'>
 		    	<PhotoPaper fluidImg={photo} slide={true} rotateDegrees='-16' />
 		    </Box>
-		    <Box position='absolute' height={100} width={100} top={20} right={20}>
+		    <Box position='absolute' height={67} width={67} top={20} right={20}>
 		    	<Img fluid={logo} />
 		    </Box>
 		    <Box position='absolute' className={classes.verticalCenterRight}>
