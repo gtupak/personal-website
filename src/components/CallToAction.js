@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -35,6 +35,13 @@ const useStyles = makeStyles({
 const CallToAction = ({ bgImage, logo, photo }) => {
   const classes = useStyles();
   const showDesktopVersion = useMediaQuery('(min-width: 600px)');
+  const [screenHeight, setScreenHeight] = useState('100vh');
+
+  useEffect(() => {
+		if (window.innerHeight < 670) {
+			setScreenHeight(670);
+		}
+  }, []);
 
   const onChatBtnPressed = (event) => {
 		window.location = 'mailto:gabriel@neappoli.com';
@@ -85,7 +92,7 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 		<BackgroundImage
 			fluid={bgImage}
 		>
-			<Box position='relative' height='100vh'>
+			<Box position='relative' height={screenHeight}>
 				<Box display='flex' justifyContent='center' alignItems='center' pt={5}>
 		    	<PhotoPaper fluidImg={photo} slide width='65vw' padding={2} />
 		    </Box>
