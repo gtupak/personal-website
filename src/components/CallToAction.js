@@ -53,7 +53,7 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 		>
 			<Box height='100vh' position='relative' >
 				<Box position='absolute' top='6vw' left='9vw'>
-		    	<PhotoPaper fluidImg={photo} slide={true} rotateDegrees='-16' />
+		    	<PhotoPaper fluidImg={photo} rotateDegrees='-16' />
 		    </Box>
 		    <Box position='absolute' height={67} width={67} top={20} right={20}>
 		    	<Img fluid={logo} />
@@ -94,7 +94,7 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 		>
 			<Box position='relative' height={screenHeight}>
 				<Box display='flex' justifyContent='center' alignItems='center' pt={5}>
-		    	<PhotoPaper fluidImg={photo} slide width='65vw' padding={2} />
+		    	<PhotoPaper fluidImg={photo} width='65vw' padding={2} />
 		    </Box>
 		    <Box pt={2} display='flex' flexDirection='column' justifyContent='center' >
 		    	<Box pt={1}>
