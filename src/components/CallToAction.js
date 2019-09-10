@@ -76,7 +76,7 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 		    </Box>
 		    <Box position='absolute' bottom='6vh' display='flex' alignItems='center' justifyContent='center' width='100vw' >
 		      <Typography color='textSecondary' className={classes.lightHeaderText} variant='h3'>
-		        Need a freelancer?
+		        Need a website or an app?
 		      </Typography>
 		      <Box ml={2}>
 		        <Button onClick={onChatBtnPressed} variant='contained' color='secondary'>
@@ -152,8 +152,8 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 		    	className={classes.horizontalCenter}
 		    	width='100vw'
 	    	>
-		      <Typography gutterBottom color='textSecondary' variant='h3'>
-		        Need a freelancer?
+		      <Typography gutterBottom className={classes.lightHeaderText} align='center' color='textSecondary' variant='h4'>
+		        Need a website or an app?
 		      </Typography>
 	        <Button onClick={onChatBtnPressed} variant='contained' color='secondary'>
 	          Let's chat
