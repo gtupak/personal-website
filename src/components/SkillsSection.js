@@ -30,6 +30,14 @@ const SkillsSection = () => {
 
 	const onChatBtnPressed = (event) => {
 		window.location = 'mailto:gabriel@neappoli.com';
+
+		// From google ads; guard against do not track
+		if (window.gtag !== 'undefined') {
+			window.gtag('event', 'conversion', {
+				'send_to': 'AW-800491324/BAP1CN_g26oBELyO2v0C',
+				'event_callback': null
+			});
+		}
   };
 
 	return(
