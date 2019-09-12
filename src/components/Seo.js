@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from "react-helmet";
 
 const title = 'Gabriel Tapuc | Web and Mobile App Freelancer';
-const description = 'Build quality web and mobile applications, stress-free.'
+const description = 'Hire a Canadian Freelancer. Build quality web and mobile applications, stress-free.'
 const siteName = 'https://gabrieltapuc.com/';
 
 // Todo images
