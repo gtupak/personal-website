@@ -22,7 +22,7 @@ const projectData = {
 	},
 	sfmatei: {
 		title: 'St. Matthew Romanian Orthodox Parish',
-		description: "The official church's website",
+		description: "The official church website",
 		image: sfMateiImg,
 		features: [
 			'Responsive website in React',

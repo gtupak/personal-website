@@ -68,10 +68,10 @@ const ValuesSection = () => {
 							<CheckCircleIcon color='secondary' fontSize='default' />
 							<Box pl={2}>
 								<Typography className={classes.lightText} variant='h4' color='textSecondary'>
-									Full Stack Development
+									Custom Features
 								</Typography>
 								<Typography style={{ color: '#afb0b3' }} variant='subtitle2'>
-									Server logic & custom features
+									Full Stack Development (back-end and front-end)
 								</Typography>
 							</Box>
 						</Box>

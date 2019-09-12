@@ -1,4 +1,4 @@
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 959px) {
 	.desktopCTA {
 		display: none;
 	}
@@ -7,7 +7,7 @@
 	}
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 960px) {
 	.desktopCTA {
 		display: block;
 	}

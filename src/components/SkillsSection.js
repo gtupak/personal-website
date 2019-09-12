@@ -2,11 +2,13 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/styles';
 import LaptopIcon from '@material-ui/icons/Laptop';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
@@ -23,6 +25,16 @@ const useStyles = makeStyles({
 		fontWeight: 500
 	}
 });
+
+const NewTabLink = ({ href, children }) => (
+	<Link 
+		href={href}
+		target='_blank'
+		rel='noopener'
+	>
+		{children}
+	</Link>
+);
 
 const SkillsSection = () => {
 	const classes = useStyles();
@@ -42,14 +54,16 @@ const SkillsSection = () => {
 
 	return(
 		<Box my={3}>
+			<Container>
 			<Typography
 				gutterBottom
 				align='center'
 				variant='h4'
 				style = {{ fontWeight: 500 }}
 			>
-				NEED ANYTHING DIGITALIZATION?
+				DIGITALIZE YOUR BUSINESS
 			</Typography>
+			</Container>
 			<Grid
 				container
 				justify='center'
@@ -88,7 +102,9 @@ const SkillsSection = () => {
 								</ListItemIcon>
 								<ListItemText>
 									<Typography variant='h5' color='primary'>
-										React <b>(web)</b>
+										<NewTabLink href='https://reactjs.org/'>
+											React <b>(web)</b>
+										</NewTabLink>
 									</Typography>
 								</ListItemText>
 							</ListItem>
@@ -98,7 +114,9 @@ const SkillsSection = () => {
 								</ListItemIcon>
 								<ListItemText>
 									<Typography variant='h5' color='primary'>
-										Flutter & Swift <b>(mobile apps)</b>
+										<NewTabLink href='https://flutter.dev'>
+											Flutter & Swift <b>(mobile apps)</b>
+										</NewTabLink>
 									</Typography>
 								</ListItemText>
 							</ListItem>
@@ -108,7 +126,13 @@ const SkillsSection = () => {
 								</ListItemIcon>
 								<ListItemText>
 									<Typography variant='h5' color='primary'>
-										Node.JS + Firebase
+										<NewTabLink href='https://nodejs.org/en/'>
+											Node.JS
+										</NewTabLink>
+										{` + `}
+										<NewTabLink href='https://firebase.google.com/'>
+											Firebase
+										</NewTabLink>
 									</Typography>
 								</ListItemText>
 							</ListItem>

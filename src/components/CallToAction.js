@@ -34,12 +34,43 @@ const useStyles = makeStyles({
 
 const CallToAction = ({ bgImage, logo, photo }) => {
   const classes = useStyles();
-  const showDesktopVersion = useMediaQuery('(min-width: 600px)');
+  const showDesktopVersion = useMediaQuery('(min-width: 960px)');
   const [screenHeight, setScreenHeight] = useState('100vh');
+  const [isLandscapeMode, setIsLandscapeMode] = useState(false);
 
   useEffect(() => {
+  	function updateLandscapeModeState() {
+			setIsLandscapeMode(!window.matchMedia('(orientation: landscape)').matches);
+		}
+
+		function updateScreenHeight() {
+			// The "if"s here are inversed because this is getting called right *before* the orientation change
+			// So the height & width reverse right after this call; 
+			// hence treat width as height & vice versa
+			if (window.innerWidth < 670) {
+				if (!window.matchMedia('(orientation: landscape)').matches) {
+					setScreenHeight(580);
+				} else {
+					setScreenHeight(670);
+				}
+			}
+		}
+
+		setIsLandscapeMode(window.matchMedia('(orientation: landscape)').matches);
 		if (window.innerHeight < 670) {
-			setScreenHeight(670);
+				if (window.matchMedia('(orientation: landscape)').matches) {
+					setScreenHeight(580);
+				} else {
+					setScreenHeight(670);
+				}
+			}
+
+		window.addEventListener('orientationchange', updateLandscapeModeState);
+		window.addEventListener('orientationchange', updateScreenHeight);
+
+		return () => {
+			window.removeEventListener('orientationchange', updateLandscapeModeState);
+			window.removeEventListener('orientationchange', updateScreenHeight);
 		}
   }, []);
 
@@ -102,7 +133,7 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 		>
 			<Box position='relative' height={screenHeight}>
 				<Box display='flex' justifyContent='center' alignItems='center' pt={5}>
-		    	<PhotoPaper fluidImg={photo} width='65vw' padding={2} />
+		    	<PhotoPaper fluidImg={photo} width={isLandscapeMode ? '30vw' : '65vw'} padding={2} />
 		    </Box>
 		    <Box pt={2} display='flex' flexDirection='column' justifyContent='center' >
 		    	<Box pt={1}>
