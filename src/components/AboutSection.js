@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -21,6 +21,7 @@ import './AboutSection.css';
 import PhotoPaper from './PhotoPaper';
 
 const AboutSection = ({ photo }) => {
+  const [isLandscapeMode, setIsLandscapeMode] = useState(false);
   const showDesktopVersion = useMediaQuery('(min-width: 600px)');
 	const sectionHeight = showDesktopVersion ? '75vh' : '100vh';
 	const data = useStaticQuery(graphql`
@@ -41,6 +42,18 @@ const AboutSection = ({ photo }) => {
 			}
 		}
 	`);
+
+	useEffect(() => {
+		function updateLandscapeModeState() {
+			setIsLandscapeMode(!window.matchMedia('(orientation: landscape)').matches);
+		}
+		setIsLandscapeMode(window.matchMedia('(orientation: landscape)').matches);
+
+		window.addEventListener('orientationchange', updateLandscapeModeState);
+		return () => {
+			window.removeEventListener('orientationchange', updateLandscapeModeState);
+		};
+	}, []);
 
 	const infoList = (
 		<List>
@@ -83,7 +96,7 @@ const AboutSection = ({ photo }) => {
 					</Typography>
 				</Box>
 				<Box display='flex' justifyContent='center' pt={2}>
-					<PhotoPaper fluidImg={photo} width='75vw' padding={2} />
+					<PhotoPaper fluidImg={photo} style={{ maxWidth: 208 }} width={isLandscapeMode ? '30vw' : '75vw'} padding={2} />
 				</Box>
 				<Box pt={2} width='95vw'>
 					<Divider className='divider' variant='middle'/>

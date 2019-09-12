@@ -6,18 +6,15 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image'
 
-const sectionHeight = '75vh';
-
 const useStyles = makeStyles({
-	bgImage: {
-		height: sectionHeight
-	},
 	lightText: {
 		fontWeight: 300
 	},
 });
 
 const ValuesSection = () => {
+	const sectionHeight = '75vh';
+	const minSectionHeight = 342;
 	const data = useStaticQuery(graphql`
 		query {
 			file(relativePath: { eq: "value-section-bg.jpg" }) {
@@ -34,11 +31,12 @@ const ValuesSection = () => {
 
 	return(
 			<BackgroundImage
-				className={classes.bgImage}
+				style={{ height: sectionHeight, minHeight: minSectionHeight }}
 				fluid={data.file.childImageSharp.fluid}
 			>
 				<Box 
 					height={sectionHeight} 
+					minHeight={minSectionHeight}
 					justifyContent='center' 
 					display='flex' 
 					alignItems='center'

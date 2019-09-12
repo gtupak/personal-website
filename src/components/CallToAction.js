@@ -71,7 +71,7 @@ const CallToAction = ({ bgImage, logo, photo }) => {
 		return () => {
 			window.removeEventListener('orientationchange', updateLandscapeModeState);
 			window.removeEventListener('orientationchange', updateScreenHeight);
-		}
+		};
   }, []);
 
   const onChatBtnPressed = (event) => {
