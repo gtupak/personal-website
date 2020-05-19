@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 const NewTabLink = ({ href, children }) => (
-	<Link 
+	<Link
 		href={href}
 		target='_blank'
 		rel='noopener'
@@ -38,30 +38,30 @@ const NewTabLink = ({ href, children }) => (
 
 const SkillsSection = () => {
 	const classes = useStyles();
-  const showDesktopVersion = useMediaQuery('(min-width: 600px)');
+	const showDesktopVersion = useMediaQuery('(min-width: 600px)');
 
 	const onChatBtnPressed = (event) => {
 		window.location = 'mailto:gabriel@neappoli.com';
 
 		// From google ads; guard against do not track
-		if (window.gtag !== 'undefined') {
+		if (window.gtag !== undefined) {
 			window.gtag('event', 'conversion', {
 				'send_to': 'AW-800491324/BAP1CN_g26oBELyO2v0C',
 				'event_callback': null
 			});
 		}
-  };
+	};
 
-	return(
+	return (
 		<Box my={3}>
 			<Container>
-			<Typography
-				gutterBottom
-				align='center'
-				variant='h4'
-				style = {{ fontWeight: 500 }}
-			>
-				DIGITALIZE YOUR BUSINESS
+				<Typography
+					gutterBottom
+					align='center'
+					variant='h4'
+					style={{ fontWeight: 500 }}
+				>
+					DIGITALIZE YOUR BUSINESS
 			</Typography>
 			</Container>
 			<Grid
@@ -70,31 +70,31 @@ const SkillsSection = () => {
 				alignItems='center'
 			>
 				{
-					showDesktopVersion 
-					? (
-						<Grid item sm={6}>
-							<Box mr={2} align='right'>
-								<Typography className={classes.bold} variant='h5'>
-									My skills include:
+					showDesktopVersion
+						? (
+							<Grid item sm={6}>
+								<Box mr={2} align='right'>
+									<Typography className={classes.bold} variant='h5'>
+										My skills include:
 								</Typography>
-							</Box>
-						</Grid>
-					) : null
+								</Box>
+							</Grid>
+						) : null
 				}
 				<Grid item sm={6}>
 					<Box display='flex' justifyContent='left' align='center'>
 						<List>
 							{
 								!showDesktopVersion
-								? (
-									<ListItem>
-										<ListItemText>
-											<Typography className={classes.bold} variant='h5'>
-												My skills include:
+									? (
+										<ListItem>
+											<ListItemText>
+												<Typography className={classes.bold} variant='h5'>
+													My skills include:
 											</Typography>
-										</ListItemText>
-									</ListItem>
-								) : null
+											</ListItemText>
+										</ListItem>
+									) : null
 							}
 							<ListItem>
 								<ListItemIcon>
@@ -142,9 +142,9 @@ const SkillsSection = () => {
 			</Grid>
 			<Box align='center'>
 				<Button className={classes.connectButton} onClick={onChatBtnPressed} variant='contained' color='secondary'>
-	        LET'S CONNECT
+					LET'S CONNECT
 	      </Button>
-      </Box>
+			</Box>
 		</Box>
 	);
 };
