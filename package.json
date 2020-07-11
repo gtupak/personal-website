@@ -23,6 +23,7 @@
     "typeface-roboto": "^0.0.75"
   },
   "scripts": {
+    "start": "yarn run develop",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "deploy": "gatsby build && firebase deploy",
